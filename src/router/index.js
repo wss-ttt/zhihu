@@ -18,6 +18,11 @@ export default new Router({
 		path:'/details/:id',
 		name:'details',
 		component:resolve=>require(['@/views/details.vue'],resolve)
+	},
+	{
+		path:'/index2',
+		name:'index2',
+    	component: resolve => require(['@/views/index2.vue'], resolve),
 	}
   ]
 })
