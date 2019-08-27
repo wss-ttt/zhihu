@@ -10,12 +10,14 @@
 
 <script>
 import { fetchNewsList, getMore } from '@/api/index.js'
+import {prevDate} from '@/utils/index.js'
 import newsItem from '@/components/newsItem.vue'
 export default {
   name: 'index',
   data() {
     return {
-      newsList: [] // 存放新闻列表
+      newsList: [], // 存放新闻列表
+      currentTime: '' // 保存当前时间
     }
   },
   mounted() {
@@ -24,17 +26,18 @@ export default {
   methods: {
     getData() {
       fetchNewsList().then(res => {
-		// this.newsList = res.stories
-		// res 是一个对象
-		this.newsList = [res]
-		console.log('this.newsList',this.newsList)
+        console.log(res)
+        this.newsList = [res]
+        this.currentTime = res.date   // 保存时间
       })
     },
     more() {
+      this.currentTime = prevDate(this.currentTime,1)
       getMore({
-        time: '20190827' // 获取的当前时间的头一天的数据
+        time:this.currentTime
       }).then(res => {
-        // console.log(res)
+        console.log(res)
+        this.newsList.push(res)
       })
     }
   },
@@ -50,9 +53,6 @@ export default {
   padding: 15px 5px;
 }
 
-.wrapper .news-wrapper {
-
-}
 .wrapper .news-wrapper h3 {
   text-align: center;
   line-height: 50px;
