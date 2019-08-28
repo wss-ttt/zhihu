@@ -2,10 +2,9 @@
   <div class="header">
     <div class="left"></div>
     <div class="right">
-      <span @click="topic">专栏总览</span>
       <span @click="section">主题日报</span>
     </div>
-    <v-list :lists="lists"></v-list>
+    <v-list :lists="lists" v-show="isShow"></v-list>
   </div>
 </template>
 
@@ -20,20 +19,17 @@ export default {
   props: {},
   data() {
     return {
-      lists: []
+      lists: [],
+      isShow:false,
     }
   },
   watch: {},
   computed: {},
   methods: {
-    topic() {
-      getTopics().then(res => {
-        this.lists = res
-      })
-    },
     section() {
       getSections().then(res => {
-        this.lists = res
+        this.lists = res.data
+        this.isShow = !this.isShow 
       })
     }
   },
@@ -49,6 +45,7 @@ export default {
   justify-content: space-between;
   background-color: #fff;
   border-radius: 4px;
+  position: relative;
 }
 .header .left {
   background: url('../assets/avatar.jpg') no-repeat;
