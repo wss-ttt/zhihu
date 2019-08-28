@@ -6,7 +6,9 @@ import router from './router'
 import store from './store/index.js'
 // 引入全局的功能样式
 import '@/assets/css/global.css'
-
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(ElementUI)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
