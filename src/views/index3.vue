@@ -2,12 +2,13 @@
   <div class="wrapper">
     <v-header></v-header>
     <div class="news-top">
-      <h3>最新新闻</h3>
-      <news-item v-for="(news,index) in newsList.stories" :item="news" :key="index"></news-item>
+      <!-- <h3>最新新闻</h3> -->
+      <v-slider :items="sliderList"></v-slider>
+      <news-item v-for="(news,index) in newsList" :item="news" :key="index"></news-item>
     </div>
     <div class="news-more" v-for="(news,index) in  moreList" :key="index">
       <h3>{{news.date}}</h3>
-      <news-item v-for="(news,index) in newsList.stories" :item="news" :key="index"></news-item>
+      <news-item v-for="(item,index) in news.stories" :item="item" :key="index"></news-item>
     </div>
     <!-- <div class="more" @click="more">获取更多</div> -->
     <div class="more" @click="more">
@@ -25,6 +26,7 @@ import { fetchNewsList, getMore } from '@/api/index.js'
 import { prevDate } from '@/utils/index.js'
 import newsItem from '@/components/newsItem.vue'
 import vHeader from '@/components/header.vue'
+import vSlider from '@/components/slider.vue'
 export default {
   name: 'index3',
   data() {
@@ -33,6 +35,7 @@ export default {
       moreList: [], // 存放获取更多的新闻列表
       currentTime: '', // 保存当前时间
       loading:true,   // 控制loading的显示和隐藏
+      sliderList:[],   // 轮播图
     }
   },
   mounted() {
@@ -41,8 +44,8 @@ export default {
   methods: {
     getData() {
       fetchNewsList().then(res => {
-        console.log(res)
-        this.newsList = res
+        this.newsList = res.stories
+        this.sliderList = res.top_stories
         this.currentTime = res.date // 保存时间
       })
     },
@@ -52,7 +55,6 @@ export default {
       getMore({
         time: this.currentTime
       }).then(res => {
-        console.log(res)
         this.loading = true
         this.moreList.push(res)
       })
@@ -60,7 +62,8 @@ export default {
   },
   components: {
     newsItem,
-    vHeader
+    vHeader,
+    vSlider
   }
 }
 </script>
