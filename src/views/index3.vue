@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <v-header></v-header>
     <div class="news-top">
       <h3>最新新闻</h3>
       <news-item v-for="(news,index) in newsList.stories" :item="news" :key="index"></news-item>
@@ -23,6 +24,7 @@
 import { fetchNewsList, getMore } from '@/api/index.js'
 import { prevDate } from '@/utils/index.js'
 import newsItem from '@/components/newsItem.vue'
+import vHeader from '@/components/header.vue'
 export default {
   name: 'index',
   data() {
@@ -57,7 +59,8 @@ export default {
     }
   },
   components: {
-    newsItem
+    newsItem,
+    vHeader
   }
 }
 </script>
