@@ -8,9 +8,18 @@ import store from './store/index.js'
 import '@/assets/css/global.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-Vue.use(ElementUI)
-Vue.config.productionTip = false
+import VueLazyLoad from 'vue-lazyload'
 
+Vue.use(ElementUI)
+
+// 全局配置vue-lazyloay信息
+Vue.use(VueLazyLoad, {
+  error: 'static/error.jpg',
+  loading: 'static/loading.gif',
+  attempt: 1
+})
+
+Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
