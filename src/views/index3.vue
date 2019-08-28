@@ -26,7 +26,7 @@ import { prevDate } from '@/utils/index.js'
 import newsItem from '@/components/newsItem.vue'
 import vHeader from '@/components/header.vue'
 export default {
-  name: 'index',
+  name: 'index3',
   data() {
     return {
       newsList: {}, // 存放新闻列表

@@ -17,7 +17,7 @@ import { fetchNewsList, getMore } from '@/api/index.js'
 import { prevDate } from '@/utils/index.js'
 import newsItem from '@/components/newsItem.vue'
 export default {
-  name: 'index',
+  name: 'index2',
   data() {
     return {
       newsList: {}, // 存放新闻列表

@@ -48,3 +48,23 @@ export function getMore(query){
 		params:query
 	})
 }
+
+
+// 获取topics数据
+export function getTopics(query){
+	return request({
+		url:'/topics',
+		method:'get',
+		params:query
+	})
+}
+
+
+// 获取sections数据
+export function getSections(query){
+	return request({
+		url:'/sections',
+		method:'get',
+		params:query
+	})
+}

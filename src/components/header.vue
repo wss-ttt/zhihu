@@ -1,43 +1,63 @@
 <template>
-    <div class="header">
-        <div class="left">
-
-        </div>
-        <div class="right">
-            <span>专栏总览</span>
-            <span>主题日报</span>
-        </div>
+  <div class="header">
+    <div class="left"></div>
+    <div class="right">
+      <span @click="topic">专栏总览</span>
+      <span @click="section">主题日报</span>
     </div>
+    <v-list :lists="lists"></v-list>
+  </div>
 </template>
 
 <script>
-  export default {
-    components:{},
-    props:{},
-    data(){
-      return {
-          
-      }
+import { getTopics, getSections } from '@/api/index.js'
+import vList from '@/components/list.vue'
+export default {
+  name: 'vHeader',
+  components: {
+    vList
+  },
+  props: {},
+  data() {
+    return {
+      lists: []
+    }
+  },
+  watch: {},
+  computed: {},
+  methods: {
+    topic() {
+      getTopics().then(res => {
+        this.lists = res
+      })
     },
-    watch:{},
-    computed:{},
-    methods:{},
-    created(){},
-    mounted(){}
-  }
+    section() {
+      getSections().then(res => {
+        this.lists = res
+      })
+    }
+  },
+  created() {},
+  mounted() {}
+}
 </script>
 <style scoped>
-.header{
-    height:80px;
-    line-height: 80px;
-    display: flex;
-    justify-content: space-between;
+.header {
+  height: 80px;
+  line-height: 80px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 4px;
 }
-.header .left{
-    background: url('http://daily.zhihu.com/img/new_home_v3/top_logo.png') no-repeat;
+.header .left {
+  background: url('../assets/avatar.jpg') no-repeat;
+  background-size: 100%;
+  width: 80px;
 }
-.header .right{
-
+.header .right span {
+  padding: 0 5px;
+  color: #008bed;
+  cursor: pointer;
 }
-
 </style>
