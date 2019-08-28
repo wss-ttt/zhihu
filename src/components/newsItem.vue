@@ -1,7 +1,8 @@
 <template>	
 	<router-link :to="{name:'details',params:{id:item.id}}" >
 		<div class="item">
-			<img v-if="item.images" :src="imgProxy(item.images[0])" alt="" />
+			<!-- <img v-if="item.images" :src="imgProxy(item.images[0])" alt="" /> -->
+			<img v-if="item.images" v-lazy="imgProxy(item.images[0])" alt="" />
 			<div class="title">{{item.title}}</div>
 		</div>
 	</router-link>

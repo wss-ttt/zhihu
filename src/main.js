@@ -14,8 +14,8 @@ Vue.use(ElementUI)
 
 // 全局配置vue-lazyloay信息
 Vue.use(VueLazyLoad, {
-  error: 'static/error.jpg',
-  loading: 'static/loading.gif',
+  error: require('../static/error.jpg'),
+  loading: require('../static/loading.gif'),
   attempt: 1
 })
 

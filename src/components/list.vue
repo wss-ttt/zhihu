@@ -2,7 +2,8 @@
   <div class="list">
     <ul>
       <li v-for="(item,index) in lists" :key="index">
-        <img :src="imgProxy(item.thumbnail)" :alt="item.description" />
+        <!-- <img :src="imgProxy(item.thumbnail)" :alt="item.description" /> -->
+        <img v-lazy="imgProxy(item.thumbnail)" :alt="item.description" />
         <span>{{item.name}}</span>
       </li>
     </ul>
