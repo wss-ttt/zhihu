@@ -75,7 +75,7 @@ export default {
 }
 
 .wrapper .content {
-  padding: 0 15px;
+  padding: 0 15px 30px;
 }
 .wrapper .content .news-more h3 {
   text-align: center;

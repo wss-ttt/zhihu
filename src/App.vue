@@ -17,9 +17,13 @@ export default {
 		box-sizing: border-box;
 	}
 	#app{
-		padding: 20px;
 		margin: 0 auto;
 		max-width: 640px;
+		box-shadow: 0 0 10px #5d656c;
+	}
+	body{
+		background: #d3d3d3;
+		transition: all 1s;
 	}
 	
 </style>
